@@ -8,9 +8,9 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/gin-gonic/gin"
 	"github.com/CancerIQ/fhir/models"
 	"github.com/CancerIQ/fhir/search"
+	"github.com/gin-gonic/gin"
 )
 
 var fhirJSONContentType = []string{"application/json; application/fhir+json; charset=utf-8"}
@@ -297,6 +297,13 @@ func (u CustomJSONRenderer) Render(w http.ResponseWriter) (err error) {
 	writeContentType(w, fhirJSONContentType)
 	_, err = w.Write(data)
 	return
+}
+
+func (u CustomJSONRenderer) writeContentType(w http.ResponseWriter, value []string) {
+	header := w.Header()
+	if val := header["Content-Type"]; len(val) == 0 {
+		header["Content-Type"] = value
+	}
 }
 
 func writeContentType(w http.ResponseWriter, value []string) {
