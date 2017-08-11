@@ -300,7 +300,7 @@ func (u CustomJSONRenderer) Render(w http.ResponseWriter) (err error) {
 }
 
 func (u CustomJSONRenderer) WriteContentType(w http.ResponseWriter) {
-	writeContentType(w, jsonContentType)
+	writeContentType(w, fhirJSONContentType)
 }
 
 func writeContentType(w http.ResponseWriter, value []string) {
