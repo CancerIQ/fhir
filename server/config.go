@@ -3,7 +3,7 @@ package server
 import (
 	"time"
 
-	"github.com/intervention-engine/fhir/auth"
+	"github.com/CancerIQ/fhir/auth"
 	"gopkg.in/mgo.v2"
 )
 
