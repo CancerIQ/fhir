@@ -299,11 +299,8 @@ func (u CustomJSONRenderer) Render(w http.ResponseWriter) (err error) {
 	return
 }
 
-func (u CustomJSONRenderer) writeContentType(w http.ResponseWriter, value []string) {
-	header := w.Header()
-	if val := header["Content-Type"]; len(val) == 0 {
-		header["Content-Type"] = value
-	}
+func (u CustomJSONRenderer) WriteContentType(w http.ResponseWriter) {
+	writeContentType(w, jsonContentType)
 }
 
 func writeContentType(w http.ResponseWriter, value []string) {
